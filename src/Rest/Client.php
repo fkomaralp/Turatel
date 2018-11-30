@@ -1,10 +1,10 @@
 <?php
 
-namespace Fkomaralp\Turatel;
+namespace Fkomaralp\Turatel\Rest;
+
 
 class Client
 {
-
     /**
      *   Create client
      */
@@ -12,8 +12,4 @@ class Client
     {
     }
 
-    public function test()
-    {
-        return "test";
-    }
 }

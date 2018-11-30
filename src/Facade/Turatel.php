@@ -2,7 +2,7 @@
 
 namespace Fkomaralp\Turatel\Facade;
 
-use Fkomaralp\Turatel\Client;
+use Fkomaralp\Turatel\Rest\Client;
 use Illuminate\Support\Facades\Facade;
 
 class Turatel extends Facade

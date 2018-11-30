@@ -3,7 +3,6 @@
 namespace Fkomaralp\Turatel;
 
 use Illuminate\Support\ServiceProvider;
-use Fkomaralp\Turatel\Turatel;
 
 class TuratelServiceProvider extends ServiceProvider
 {
@@ -18,7 +17,7 @@ class TuratelServiceProvider extends ServiceProvider
         $this->publishes([$configPath => config_path('turatel.php')], 'config');
 
         $this->app->singleton('turatel', function($app){
-            return new Turatel();
+            return new Client();
         });
 
     }

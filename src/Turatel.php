@@ -2,7 +2,7 @@
 
 namespace Fkomaralp\Turatel;
 
-use Fkomaralp\Rest\Client;
+use Fkomaralp\Turatel\Rest\Client;
 
 class Turatel extends Client
 {
@@ -30,7 +30,6 @@ class Turatel extends Client
     public function __call($name, $arguments)
     {
         if (method_exists($this, $name)) {
-            dd("asd");
             return call_user_func_array(array($this, $name), $arguments);
         }
 

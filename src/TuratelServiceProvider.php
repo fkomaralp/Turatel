@@ -2,7 +2,7 @@
 
 namespace Fkomaralp\Turatel;
 
-class ServiceProvider extends \Illuminate\Support\ServiceProvider
+class TuratelServiceProvider extends \Illuminate\Support\ServiceProvider
 {
      /**
      * Bootstrap services.

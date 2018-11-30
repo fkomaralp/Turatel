@@ -24,7 +24,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Fkomaralp\\Turatel\\ServiceProvider"
+        "Fkomaralp\\Turatel\\TuratelServiceProvider"
       ],
       "aliases": {
         "Turatel": "Fkomaralp\\Turatel\\Facade"

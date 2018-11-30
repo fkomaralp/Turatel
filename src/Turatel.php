@@ -16,6 +16,8 @@ class Turatel extends Client
      */
     public function __construct($useSsl = true)
     {
+        parent::__construct();
+
         if(!$useSsl){
             $this->baseUri = "http://processor.smsorigin.com/xml/process.aspx";
         }
@@ -23,8 +25,7 @@ class Turatel extends Client
 
     public function __get($name)
     {
-        dd("__get");
-
+        return "__get";
     }
 
     public function __call($name, $arguments)

@@ -1,25 +1,61 @@
 <?php
 namespace Fkomaralp\Turatel\Rest;
 
+use anlutro\cURL\cURL;
+use Spatie\ArrayToXml\ArrayToXml;
+
 class Client
 {
-    public function sendsms()
+
+    /**
+     * @var string Xml setup
+     */
+    protected $xml;
+
+    public function __construct()
     {
-        return "asd";
+        $data = [
+            "PlatformID" => config("turatel.platform_id"),
+            "ChannelCode" => config("turatel.channel_code"),
+            "UserName" => config("turatel.username"),
+            "PassWord" => config("turatel.password"),
+            "Originator" => config("turatel.originator"),
+//            "Contact" => 1,
+        ];
+
+        $this->xml = $data;
     }
 
-    public function __get($name)
+    /**
+     * @param string $message
+     * @param array $numbers
+     * @return \anlutro\cURL\Response
+     */
+    public function sendSms($message = "", $numbers = [] )
     {
-        dd("__get");
+        $this->xml["Command"] = 0;
+        $this->xml["Mesgbody"] = $message;
+        $this->xml["Type"] = 2;
+        $this->xml["Numbers"] = implode(";", $numbers);
+
+        return $this->request("MainmsgBody", $this->xml);
     }
 
-    public function __call($name, $arguments)
-    {
-        if (method_exists($this, $name)) {
-            return call_user_func_array(array($this, $name), $arguments);
-        }
+    /**
+     * @param $root
+     * @param $data
+     * @return \anlutro\cURL\Response
+     */
+    public function request($root, $data){
+        $xml = ArrayToXml::convert($data, $root,true, 'UTF-8');
 
-        return \Exception("method bulunamadı");
+        $curl = new cURL();
+        $request = $curl->newRawRequest("post", config("turatel.base_uri"), $xml)
+            ->setHeader("Content-Type", "text/xml")
+            ->setHeader("HTTP_PRETTY_PRINT", "TRUE");
+
+        $response = $request->send();
+
+        return $response->body;
     }
-
 }

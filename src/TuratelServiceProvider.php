@@ -2,7 +2,10 @@
 
 namespace Fkomaralp\Turatel;
 
-class TuratelServiceProvider extends \Illuminate\Support\ServiceProvider
+use Illuminate\Support\ServiceProvider;
+use Fkomaralp\Turatel\Turatel;
+
+class TuratelServiceProvider extends ServiceProvider
 {
      /**
      * Bootstrap services.
@@ -13,6 +16,11 @@ class TuratelServiceProvider extends \Illuminate\Support\ServiceProvider
     {
         $configPath = __DIR__ . '/../config/turatel.php';
         $this->publishes([$configPath => config_path('turatel.php')], 'config');
+
+        $this->app->singleton('turatel', function($app){
+            return new Turatel();
+        });
+
     }
 
     /**
@@ -22,8 +30,6 @@ class TuratelServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Turatel::class, function($app){
-            return new Turatel();
-        });
+
     }
 }

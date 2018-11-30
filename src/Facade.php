@@ -2,7 +2,7 @@
 
 namespace Fkomaralp\Turatel\Facades;
 
-use Fkomaralp\Turatel\Client;
+use Fkomaralp\Turatel\Turatel;
 
 class Facade extends \Illuminate\Support\Facades\Facade
 {
@@ -13,6 +13,6 @@ class Facade extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return Client::class;
+        return Turatel::class;
     }
 }

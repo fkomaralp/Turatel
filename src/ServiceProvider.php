@@ -22,8 +22,8 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(Client::class, function($app){
-            return new Client();
+        $this->app->bind(Turatel::class, function($app){
+            return new Turatel();
         });
     }
 }

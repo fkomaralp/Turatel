@@ -2,7 +2,7 @@
 
 namespace Fkomaralp\Turatel;
 
-class Client
+class Turatel
 {
 
     /**

@@ -27,7 +27,7 @@
         "Fkomaralp\\Turatel\\TuratelServiceProvider"
       ],
       "aliases": {
-        "Turatel": "Fkomaralp\\Turatel\\Facade"
+        "Turatel": "Fkomaralp\\Turatel\\TuratelFacade"
       }
     }
   }

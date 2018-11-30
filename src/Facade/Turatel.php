@@ -1,8 +1,11 @@
 <?php
 
-namespace Fkomaralp\Turatel\Facades;
+namespace Fkomaralp\Turatel\Facade;
 
-class Facade extends \Illuminate\Support\Facades\Facade
+use Fkomaralp\Turatel\Client;
+use Illuminate\Support\Facades\Facade;
+
+class Turatel extends Facade
 {
     /**
      *  Get the registered name of the component.
@@ -11,6 +14,6 @@ class Facade extends \Illuminate\Support\Facades\Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'turatel';
+        return Client::class;
     }
 }

@@ -1,15 +1,10 @@
 <?php
-
-namespace Fkomaralp\Turatel\Rest;
-
+namespace Fkomaralp\Rest;
 
 class Client
 {
-    /**
-     *   Create client
-     */
-    public function __construct()
+    public function sendsms()
     {
+        return "asd";
     }
-
 }
